@@ -63,25 +63,48 @@ BNF凡是的语法：在BNF中，双引号中的子["world"]代表这些字符�
 练习：
 定义终结符："a"
 定义终结符："b"
+<Program>:= "a"+ | "b"+
+<Program>:= <Program> "a"+ | <Program> "b"+
+
+定义十进制
+<Number> = "0" | "1" | "2" | ...... | "9"
+<DecimalNumber> = "0" | (("1" | "2" | ...... | "9") <Number>*)
+
+定义加法
+<Expression> = <DecimalNumber> | <Expression> "+" <DecimalNumber>
+
+案例：四则运算
+	1 + 2 * 3
+	终结符:
+	Number    +-*/
+	非终结符
+	MultiplicativeExpression
+	AddtiveExpression
+	<Number> = "0" | "1" | "2" | ...... | "9"
+<DecimalNumber> = "0" | (("1" | "2" | ...... | "9") <Number>*)
+<AddExpression> = <DecimalNumber> | <AddExpression> "+" <DecimalNumber>
+
+变
+<MultiplicativeExpression> = <DecimalNumber> | 
+							<MultiplicativeExpression> "*" <DecimalNumber> |
+							<MultiplicativeExpression> "/" <DecimalNumber>
+变
+<AddExpression> = <MultiplicativeExpression> | 
+					<AddExpression> "+" <MultiplicativeExpression> |
+					<AddExpression> "-" <MultiplicativeExpression>
+
+<MultiplicativeExpression> = <MultiplicativeExpression> | <AddExpression> "+" <MultiplicativeExpression>
+变
+<LogicalExpression> = <AddExpression> | 
+					<LogicalExpression> "||" <AddExpression>  |
+                    <LogicalExpression>  "&&" <AddExpression>
+                    
+带括号
+<PrimaryExpression> = <DecimalNumber> | 
+						"(" <LogicalExpression> ")"
+
+
+
 ```
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
 
 
