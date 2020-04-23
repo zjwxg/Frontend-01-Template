@@ -203,4 +203,7 @@ AdditiveExpression:
 | Identifier<br />Literal | Atom<br />Operator<br />Punctuator（符号） | Expression<br />Keyword<br />Punctuator | Function<br />Class<br />Process<br />Namespace<br />...... | Program<br />Module<br />Package<br />Library |
 
 ####  二、JavaScript词法、类型
+#####  关于JavaScript词法、类型方面，暂时没什么记得。
+
+最后小记：这周的课讲的编译原理对我来说还是比较深的，整周的课程要重新看，重新查找资料。有些名词都还比较陌生，需要去查资料了解名词，进而去了解老师讲的是什么。还有没弄懂的，产生式和js的词法方面还有欠缺，需要再下功夫。
 
