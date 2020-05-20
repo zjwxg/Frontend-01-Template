@@ -1,4 +1,5 @@
 const net = require('net')
+const parser = require("./parser.js")
 
 class Request {
     //method, url = host + port + path
@@ -248,8 +249,10 @@ void async function () {
             name: "winter"
         }
     });
-    let response = await request.send();
-    console.log(response)
+    let response = await request.send();  //此处是等得到所有的responend，在把整个body传给parser，实际过程不是这样的
+
+    let dom = parser.parseHTML(response.body)
+
 }()
 
 
