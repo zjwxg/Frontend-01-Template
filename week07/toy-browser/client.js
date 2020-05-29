@@ -1,14 +1,16 @@
 const net = require('net')
 const parser = require("./parser.js")
+const render = require("./render.js")
+const images = require("images")
 
 class Request {
-    constructor(option) {
-        this.method = option.method || 'GET'
-        this.host = option.host
-        this.port = option.port || 80
-        this.path = option.path || "/"
-        this.body = option.body || {}
-        this.headers = option.headers || {}
+    constructor(options) {
+        this.method = options.method || 'GET'
+        this.host = options.host
+        this.port = options.port || 80
+        this.path = options.path || "/"
+        this.body = options.body || {}
+        this.headers = options.headers || {}
         if (!this.headers["Content-Type"]) {
             this.headers["Content-Type"] = "application/x-www-form/urlencoded"
         }
@@ -54,6 +56,10 @@ ${this.bodyText}`
             })
         })
     }
+}
+
+class Response {
+
 }
 
 class ResponseParser {
@@ -248,6 +254,10 @@ void async function () {
     let response = await request.send();  //此处是等得到所有的responend，在把整个body传给parser，实际过程不是这样的
 
     let dom = parser.parseHTML(response.body)
+
+    let viewport = images(800,600)
+    render(viewport,dom)
+    viewport.save("viewport.jpg")
 
 }()
 
