@@ -128,7 +128,8 @@ DOM:
     - isSameNode检查两个节点是否是同一节点，实际上JavaScript可以用“===”
     - cloneNode复制一个节点，如果传入参数true，则会连同子元素做深拷贝。
 - Event
-  - 
+  - 捕获
+  - 冒泡
 
 
 
